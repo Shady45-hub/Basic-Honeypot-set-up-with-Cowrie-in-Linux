@@ -1,0 +1,2 @@
+This lab shows how Cowrie can be set up quickly on Kali Linux to simulate vulnerable SSH/Telnet services.
+By logging all attacker commands and activities, security teams can study real-world behavior safely in a controlled environment.
