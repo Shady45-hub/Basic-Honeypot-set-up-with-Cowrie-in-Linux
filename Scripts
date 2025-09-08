@@ -1,0 +1,37 @@
+
+# Downloads the Cowrie honeypot source code.
+git clone https://github.com/cowrie/cowrie.git	
+
+# Creates a Python virtual environment for Cowrie.
+python3 -m venv cowrie-env	
+
+# Activates the Python environment so dependencies don’t affect the system globally
+source cowrie-env/bin/activate
+
+# Installs all required Python libraries for Cowrie.
+pip install -r requirements.txt	
+
+
+# Copies the default configuration file to a working config.
+cp etc/cowrie.cfg.dist etc/cowrie.cfg	
+
+# Creates a user/password database with weak credentials.
+nano etc/userdb.txt	
+
+# Starts the Cowrie honeypot service.
+./bin/cowrie start	
+
+# Stops the honeypot service.
+./bin/cowrie stop	Stops the honeypot service.
+
+# Monitors Cowrie logs in real-time to see connection attempts.
+tail -f var/log/cowrie/cowrie.log	
+
+# Simulates an SSH connection to the honeypot.
+ssh -p 2222 user@127.0.0.1	
+
+# Simulates a Telnet connection to the honeypot.
+telnet 127.0.0.1 2223	
+
+# Removes old SSH fingerprints when testing fresh Cowrie setups.
+ssh-keygen -R "[127.0.0.1]:2222"
